@@ -1,0 +1,14 @@
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\bin\Debug\net6.0\1024Core.deps.json
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\bin\Debug\net6.0\1024Core.dll
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\bin\Debug\net6.0\1024Core.pdb
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.csproj.AssemblyReference.cache
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.AssemblyInfoInputs.cache
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.AssemblyInfo.cs
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.csproj.CoreCompileInputs.cache
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.dll
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\refint\1024Core.dll
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.pdb
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\ref\1024Core.dll
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\bin\Debug\net6.0\1024Core.runtimeconfig.json
+E:\Windows 10\Desktop\code\c#\git\game1024\1024Core\obj\Debug\net6.0\1024Core.genruntimeconfig.cache

@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+
+<div class="text-center">
+    <h1>1024</h1>
+    <h2>HOW TO PLAY: Use your arrow keys to move the tiles. <br>Tiles with the same number merge into one when they touch. <br>Add them up to reach 1024!</h2>
+    <div id="a_div">
+        <a href="/_1024/" id="titlestart">START</a>
+    </div>
+</div>
+
+<style>
+    h1 {
+        font-size: 120px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+    }
+    #titlestart {        
+        font-size: 120px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+        -webkit-transition: all 1s ease;
+        transition: all 1s ease;
+        text-decoration: none;
+        border: 10px solid rgb(119, 110, 101);
+        border-radius: 80px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+     #titlestart:hover{
+        color: #ffa000; /* Меняем цвет ссылки */
+        border-color: #ffa000;
+    }
+    #a_div {
+        margin: 60px;    }
+</style>

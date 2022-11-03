@@ -1,0 +1,553 @@
+﻿@using _1024Core.Core
+@using _1024Web.Models
+
+@model _1024Web.Models._1024Model
+
+@{
+    ViewData["Title"] = "1024";
+}
+
+<head>
+    <script src='@Url.Content("~/lib/jquery/dist/jquery.min.js")'></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+</head>
+
+
+@*<h1>1024</h1>*@
+@*<h2>Scores</h2>
+<ol>
+    @foreach(var score in Model.Scores)
+    {
+        <li>@score.Player @score.Points</li>   
+    }
+</ol>*@
+
+@*<div class="text-center">
+    <h1>1024</h1>
+    <div class="cont">
+        <div class="score-cont">
+            <h4>SCORE</h4>
+            <h2 class="game1" id="score1">@Model.Field.score.ScoreReal</h2>
+        </div>
+        <div class="score-cont">
+            <h4>BEST</h4>
+            <h2 id="score2">@Model.Field.score.ScoreMax</h2>
+        </div>
+    </div>
+</div><br/>*@
+
+@*<form action="/_1024/SaveScore" method="post">
+    Name: <input required type="text" name="Player"/><br/>
+    Score: <input type="number" name="Points" value="@Model.Field.score.ScoreReal" readonly/><br/>
+    <input disabled id="class1" type="submit"/><br/>
+    <input disabled id="update2" type="submit"/><br/>
+</form>
+
+<form action="/_1024/SaveComment" method="post">
+    Name: <input required type="text" name="Player" /><br />
+    Comment: <input type="text" name="_Comment" /><br />
+    Rating: <input type="number" name="Points" /><br />
+    <input type="submit" /><br />
+</form>*@
+
+<br/>
+@*<div id="gama3">Solved: @Model.Field.IsLost()<br/></div>
+Score: @Model.Field.score.ScoreReal<br/>*@
+
+<div id="game1" class="text-center">
+    <div class="cont">
+        <div class="score-cont">
+            <h4>SCORE</h4>
+            <h2 class="game1" id="score1">@Model.Field.score.ScoreReal</h2>
+        </div>
+        @*<div class="score-cont">
+            <h4>BEST</h4>
+            <h2 id="score2">@Model.Field.score.ScoreMax</h2>
+        </div>*@
+    </div>
+        <table class="game1">
+            @for (int row = 0; row < Model.Field.RowCount; row++)
+            {
+                <tr>
+                    @for (int column = 0; column < Model.Field.ColumnCount; column++)
+                    {
+                        Tile tile = Model.Field[row, column];
+
+                        if (tile == null)
+                        {
+                            <td class="tdtd">
+                                <img class="tile" src="/images/pieces/None.svg" width="100" height="100"/>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="tdtd" id="game2">
+                                <img class="tile" id="game2" src="/images/pieces/@(tile.Value).svg" width="100" height="100"/>
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+
+        </table>
+                <div id="game-over">
+            @if (Model.Field.IsLost())
+            {
+                    <h4 id="pad">You lose!</h4>
+                    @*<form action="/_1024/SaveScore" method="post">
+                    Name: <input required type="text" name="Player"/><br/>
+                    Score: <input type="number" name="Points" value="@Model.Field.score.ScoreReal" readonly/><br/>
+                    <input id="two" type="submit"/><br/>
+                    </form>*@
+  
+    } else if (Model.Field.IsWin())
+    {
+  
+                    <h4 id="pad">You win!</h4>
+    
+    } else
+    {
+     
+                    <h4 id="pad">Play!</h4>
+    }
+        </div>
+</div>
+<div class="text-center">
+    <img onclick="myFunction()" id="one" src="/images/pieces/restart.png" />
+    <button id="two">Add comment
+        <span></span>
+    </button>
+    <button id="twoq">Save Score
+        <span></span>
+    </button>
+    <button id="twoqq">Add rating
+        <span></span>
+    </button>
+    <button id="buttonclose">Hide
+        <span></span>
+    </button>
+</div>
+
+<div hidden id='blablabla'>
+<form action="/_1024/SaveComment" method="post" class="decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <input required type="text" placeholder="Username" name="Player">
+        <input type="number" min="1" max="5" placeholder="Points" name="Points">
+        <textarea placeholder="Comment..." rows="3" name="_Comment"></textarea>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+
+<div hidden id='blablablaq'>
+<form class="decor" action="/_1024/SaveScore" method="post">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <input required type="text" placeholder="Username" name="Player">
+        <input id="formscore" type="number" placeholder="Points" name="Points" value="@Model.Field.score.ScoreReal" readonly>
+        @*<textarea placeholder="Сообщение..." rows="3"></textarea>*@
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</div>
+
+<div hidden id='blablablaqq'>
+    <form class="decor" action="/_1024/SaveRating" method="post">
+        <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+
+    <div class="form-inner">
+        <input required type="text" placeholder="Username" name="Player">
+        <div class="rate">
+	        <div class="emoji">😑</div>
+        </div>
+	    <input type="range" min="1" max="5" step="1" name="Points">
+        <input type="submit" value="Submit">
+
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+    $(document).keyup(function(e) {
+	if (e.keyCode === 37) {
+        var url = "https://localhost:7283/_1024/Move?direction=Left";
+        
+        
+        $("#game1").load(url + ' #game1');
+        //url = "https://localhost:7283/_1024/Check";
+        //$('#score1').load(url + ' #score1');
+	} else if(e.keyCode === 38){
+        var url = "https://localhost:7283/_1024/Move?direction=Up";
+        
+        $("#game1").load(url + ' #game1');
+        
+        
+    } else if(e.keyCode === 39){
+        var url = "https://localhost:7283/_1024/Move?direction=Right";
+        
+        $("#game1").load(url + ' #game1');
+        
+        
+    } else if(e.keyCode === 40){
+        var url = "https://localhost:7283/_1024/Move?direction=Down";
+        
+        $("#game1").load(url + ' #game1');
+        
+    } else if(e.keyCode === 82){
+        var url = "https://localhost:7283/_1024/Move?direction=Down";
+    }
+        document.getElementById('formscore').value= parseInt(document.getElementById('score1').innerHTML);
+});
+    </script>
+
+    <script>
+       //$(document).ready(function() {
+       // $('#two').click(function() {
+       //     var url = "https://localhost:7283/_1024/"; // Либо добавить атрибут disabled 
+       //     $("#game1").load(url + ' #game1');
+       // });
+        function myFunction() {
+            var url = "https://localhost:7283/_1024/"; // Либо добавить атрибут disabled 
+            $("#game1").load(url + ' #game1');
+        }
+    </script>
+
+    <script>
+            const button = document.querySelector('#two');
+            const buttonq = document.querySelector('#twoq');
+            const buttonqq = document.querySelector('#twoqq');
+
+            const form = document.querySelector('#blablabla');
+            const formq = document.querySelector('#blablablaq');
+
+            var emojis = ['😶‍🌫️','😠','😦','😑','😀','😍'];
+
+            $("input").mousemove(function(){
+	            var i = $(this).val();
+	            $(".emoji").html(emojis[i]);
+            });
+
+
+            button.addEventListener('click', () => {
+                //form.classList.add('open');
+                document.getElementById('blablabla').hidden = false;
+                document.getElementById('blablablaq').hidden = true;
+                document.getElementById('blablablaqq').hidden = true;
+            });
+
+            buttonq.addEventListener('click', () => {
+                //form.classList.add('open');
+                
+                document.getElementById('blablablaq').hidden = false;
+                document.getElementById('blablabla').hidden = true;
+                document.getElementById('blablablaqq').hidden = true;
+            });
+
+            buttonqq.addEventListener('click', () => {
+                //form.classList.add('open');
+                
+                document.getElementById('blablablaqq').hidden = false;
+                document.getElementById('blablabla').hidden = true;
+                document.getElementById('blablablaq').hidden = true;
+            });
+    </script>
+
+   
+
+    <script>
+            document.getElementById('buttonclose').onclick = function() {
+                document.getElementById('blablabla').hidden = true;
+                document.getElementById('blablablaq').hidden = true;
+                document.getElementById('blablablaqq').hidden = true;
+            }
+    </script>
+
+
+<script>
+    document.onkeydown = function(e) {
+    var k = e.keyCode;
+    if(k >= 37 && k <= 40) {
+        return false;
+    }
+}
+</script>
+
+<style>
+
+    #blablabla {
+  display: block;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+#blablabla.open {
+  display: block;
+}
+
+#blablablaq {
+  display: block;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+#blablablaq.open {
+  display: block;
+}
+
+
+
+    #one {
+        margin-right: 20px;
+    }
+
+    img.tile {
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+    /*.game {
+        background: rgb(87, 83, 77);
+        padding-left: 15px;
+        padding-top: 15px;
+        border-radius: 3px;
+        width: 485px;
+        height: 485px;
+    }*/
+    /*h1 {
+        color: #ffdd57!important;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 80px;
+    }*/
+    h2 {
+         display: inline-block;
+    }
+    h4 {
+         margin-bottom: 0px;
+    }
+    #score1 {
+        color: #ffdd57!important;
+        padding-bottom: 25px;
+    }
+    /*#score2 {
+        color: #ff3860!important;
+    }*/
+    .score-cont{
+       display: inline-block;
+       text-align: center;
+    }
+    .cont {
+        display: inline-block;
+    }
+    #canvas {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        z-index: 1000;
+        background: transparent;
+        background-color: transparent;
+    }
+    h1 {
+        font-family: 'Raleway', sans-serif;
+        padding: 1em 2em;
+        font-size: 30px;
+        color: #aaa;
+        font-weight: 200;
+        margin: 0.4em 0;
+    }
+    .game1 {
+        margin:auto;
+    }
+    .tdtd {
+        text-align: center;
+    }
+    #game-over {
+        
+    }
+    #score1 {
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+    }
+    h4 {
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+    }
+
+    #pad {
+        padding-top: 10px;
+    }
+    #two{
+       
+    }
+
+
+    * {
+   box-sizing: border-box;
+}
+
+
+.circle {
+   position: absolute;
+   bottom: 80px;
+   left: -55px;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background: white;
+}
+.form-inner {
+   padding: 50px;
+   
+}
+
+.form-inner input, .form-inner textarea {
+   display: block;
+   width: 50%;
+   padding: 0 20px;
+   margin-bottom: 10px;
+   background: #E9EFF6;
+   line-height: 40px;
+   border-width: 0;
+   border-radius: 20px;
+   font-family: 'Roboto', sans-serif;
+   text-align: center;
+   margin-left: auto;
+    margin-right: auto;
+}
+.form-inner input[type="submit"] {
+   margin-top: 30px;
+   background: #f69a73;
+   border-bottom: 4px solid #d87d56;
+   color: white;
+   font-size: 14px;
+}
+.form-inner textarea {
+   resize: none;
+}
+.form-inner h3 {
+   margin-top: 0;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   font-size: 24px;
+   color: #707981;
+}
+
+
+/*td.tile {
+    width: 106.25px;
+    height: 106.25px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+}*/
+
+/*td.tile-inner {
+    border-radius: 3px;
+    background: #eee4da;
+    text-align: center;
+    z-index: 10;
+    font-size: 55px;
+}
+*/
+
+
+button {
+ border: none;
+ position: relative;
+ padding: 0.7em 2.4em;
+ font-size: 18px;
+ background: rgb(244, 188, 77);
+ cursor: pointer;
+ user-select: none;
+ overflow: hidden;
+ color: white;
+ z-index: 1;
+ font-family: inherit;
+ font-weight: 500;
+ margin-right: 20px;
+ margin-top: 20px;
+}
+
+button span {
+ position: absolute;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background: transparent;
+ z-index: -1;
+ border: 4px solid rgb(244, 188, 77);
+}
+
+button span::before {
+ content: "";
+ display: block;
+ position: absolute;
+ width: 8%;
+ height: 500%;
+ background: var(--lightgray);
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%) rotate(-60deg);
+ transition: all 0.3s;
+}
+
+button:hover span::before {
+ transform: translate(-50%, -50%) rotate(-90deg);
+ width: 100%;
+ background: royalblue;
+}
+
+button:hover {
+ color: white;
+}
+
+button:active span::before {
+ background: #2751cd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.rate {
+	text-align: center;
+	width: 200px;
+	height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+	ouline: thin solid lightgray;
+}
+.emoji {
+	font-size: 120px;
+	height: 170px;
+	line-height: 170px;
+}
+
+input {
+	cursor: ew-resize;
+}
+
+</style>

@@ -1,0 +1,176 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model _1024Web.Models.ScoreModel;
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+
+<h2 class="text-center" id="scores">Scores</h2>
+@*<ol class="container_l">
+    @foreach(var score in Model.Scores)
+    {
+        <li>
+            <div class="score_1">
+                @score.Player............................ @score.Points
+            </div>
+        </li>   
+    }
+</ol>*@
+
+<table class="container_11">
+    <thred>
+        <tr>
+            <th><h1>Name</h1></th>
+            <th><h1>Score</h1></th>
+            <th><h1>Date</h1></th>
+        </tr>
+    </thred>
+    <tbody>
+        @foreach(var score in Model.Scores)
+        {
+            <tr>
+                <td>@score.Player</td>
+                <td>@score.Points</td>
+                <td>@score.PlayedAt</td>
+            </tr>          
+        }
+    </tbody>
+</table>
+
+
+<style>
+    .container_l {
+        font-family: 'BIZ UDMincho', serif;
+        margin-left: 400px;
+    }
+    #scores {
+        font-size: 50px;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        color: rgb(119, 110, 101);
+    }
+    .score_1 {
+        font-size: 20px;
+        padding-left: 50px;
+    }
+}
+
+
+/*body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color:#A7A1AE;
+  background-color:#1F2739;
+}*/
+
+h1 {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em; 
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 15px;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container_11 th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: rgb(254, 155, 1);
+}
+
+.container_11 td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container_11 {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 80%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.container_11 td, .container th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.container_11 tr:nth-child(odd) {
+	  background-color: rgb(198, 197, 190);
+}
+
+/* Background-color of the even rows */
+.container_11 tr:nth-child(even) {
+	  background-color:  rgb(147, 146, 141);
+}
+
+.container_11 th {
+	  background-color: rgb(95, 95, 92);
+}
+
+.container_11 td:first-child { 
+    color: rgb(6, 8, 14); 
+    font-family: 'BIZ UDMincho', serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.container_11 tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container_11 td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+</style>
